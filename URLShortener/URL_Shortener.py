@@ -1,4 +1,4 @@
-class URL_Shortener:
+class URL_Shortener: 
     id = 10000000
     url2id = {}
     
