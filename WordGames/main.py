@@ -1,4 +1,4 @@
-from room import *
+from room import * 
 from item import *
 from character import *
 
