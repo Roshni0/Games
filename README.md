@@ -42,3 +42,12 @@ Tool in [HTML/CSS/JavaScript](https://github.com/Roshni0/Games/tree/master/ToDoL
 
 #### Turtle Race
 Game in [Python](https://github.com/Roshni0/Games/blob/master/Turtle/race.py)
+
+#### Type the colour not the word
+Game in [Python](https://github.com/Roshni0/Games/blob/master/TypeTheColourNotTheWord/typethecolornottheword.py)
+
+#### URL Shortener
+Tool in [Python](https://github.com/Roshni0/Games/blob/master/URLShortener/URL_Shortener.py)
+
+#### Word Game
+Game in [Python](https://github.com/Roshni0/Games/tree/master/WordGames)
