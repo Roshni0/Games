@@ -33,4 +33,4 @@ def minvalue(board, count):#Calculates the min value of a given board recursivel
     for action in posactions:
         vret, count = maxvalue(result(board, action), count)
         v = min(v, vret)
-    return v, count+1
+    return v, count+1 
