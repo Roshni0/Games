@@ -2,7 +2,27 @@ let leftShip;
 let rightShip; 
 let allDebris = [];
  
+let spaceshipImage; // this is gonna have our gorgeous ship
+function setup() {
+  createCanvas(400, 400);
+   
+  // get the spaceship image from your project-folder
+  spaceshipImage = loadImage('spaceship.png');
+   
+  // pass the image into the ship object
+  leftShip = new Ship(width * 0.33, spaceshipImage);
+  rightShip = new Ship(width * 0.66, spaceshipImage);
+   
+  for (let i = 0; i < NUM_DEBRIS; i++) {
+    allDebris.push(new Debris());
+  }
  
+  leftScore = new Score(width * 0.33 - 40);
+  rightScore = new Score(width * 0.66 + 40);
+ 
+ 
+   
+}
 // how hard do you want to make it? :D
 const NUM_DEBRIS = 30;
  
