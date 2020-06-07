@@ -1,44 +1,43 @@
-class Ship {
-  constructor(x, spaceshipImage) {
-   	this.x = x;
-    this.score = 0;
-    this.r = 15;
+class Ship{
+  constructor(x,spaceshipImage) {
+   	this.x=x;
+    this.score=0;
+    this.r=15;
     this.respawn();
     // store the image in the ship object
-    this.spaceshipImage = spaceshipImage;
+    this.spaceshipImage=spaceshipImage;
   }  
-  update() {
-  	if (this.isUp && this.y > 0) {
+  update(){
+  	if(this.isUp&&this.y>0){
     	this.up();
-    } else if (this.isDown && this.y < height - 20) {
+    }else if(this.isDown&&this.y<height-20){
     	this.down();
-    }
-    
-    if (this.hasPlayerScoredAPoint()) {
+    }    
+    if(this.hasPlayerScoredAPoint()){
     	this.score ++;
       this.respawn();
     }
   }  
-  display() {    
+  display(){    
     // display our beautiful ship to the world!
     imageMode(CENTER);
-    image(this.spaceshipImage, this.x, this.y, this.r*2, this.r*2);
+    image(this.spaceshipImage,this.x,this.y,this.r*2,this.r*2);
   }  
-  up() {
+  up(){
   	this.y--;
   }  
-  down() {
+  down(){
   	this.y++;
   }  
-  hasPlayerScoredAPoint() {
-  	if (this.y <= 0) {
+  hasPlayerScoredAPoint(){
+  	if(this.y<=0){
     	return true;
     }
     return false;
   }  
-  respawn() {
-    this.y = height - 20;
-    this.isUp = false
-    this.isDown = false;
+  respawn(){
+    this.y=height-20;
+    this.isUp=false
+    this.isDown=false;
   }
 }
