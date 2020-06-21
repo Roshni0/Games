@@ -87,7 +87,7 @@ class Dots_and_Boxes():
             self.board_status[c][r] += val
         if type == 'row':
             self.row_status[c][r] = 1
-            if c >= 1:
+            if c >= 1: 
                 self.board_status[c-1][r] += val
         elif type == 'col':
             self.col_status[c][r] = 1
@@ -202,5 +202,5 @@ class Dots_and_Boxes():
             self.canvas.delete("all")
             self.play_again()
             self.reset_board = False
-game_instance = Dots_and_Boxes()
-game_instance.mainloop()
+initiateGame = Dots_and_Boxes()
+initiateGame.mainloop()
