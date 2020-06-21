@@ -14,9 +14,7 @@ dot_width = 0.25*size_of_board/number_of_dots
 edge_width = 0.1*size_of_board/number_of_dots
 distance_between_dots = size_of_board / (number_of_dots)
 class Dots_and_Boxes():
-    # ------------------------------------------------------------------
-    # Initialization functions
-    # ------------------------------------------------------------------
+# Initialization functions
     def __init__(self):
         self.window = Tk()
         self.window.title('Dots_and_Boxes')
@@ -40,10 +38,7 @@ class Dots_and_Boxes():
         self.display_turn_text()
     def mainloop(self):
         self.window.mainloop()
-    # ------------------------------------------------------------------
-    # Logical Functions:
-    # The modules required to carry out game logic
-    # ------------------------------------------------------------------
+#Logical Functions
     def is_grid_occupied(self, logical_position, type):
         r = logical_position[0]
         c = logical_position[1]
@@ -63,7 +58,6 @@ class Dots_and_Boxes():
             c = int(position[1]//2)
             logical_position = [r, c]
             type = 'row'
-            # self.row_status[c][r]=1
         elif position[0] % 2 == 0 and (position[1] - 1) % 2 == 0:
             c = int((position[1] - 1) // 2)
             r = int(position[0] // 2)
@@ -101,10 +95,7 @@ class Dots_and_Boxes():
                 self.board_status[c][r-1] += val
     def is_gameover(self):
         return (self.row_status == 1).all() and (self.col_status == 1).all()
-    # ------------------------------------------------------------------
-    # Drawing Functions:
-    # The modules required to draw required game based object on canvas
-    # ------------------------------------------------------------------
+#Drawing Functions:
     def make_edge(self, type, logical_position):
         if type == 'row':
             start_x = distance_between_dots/2 + logical_position[0]*distance_between_dots
@@ -124,8 +115,7 @@ class Dots_and_Boxes():
     def display_gameover(self):
         player1_score = len(np.argwhere(self.board_status == -4))
         player2_score = len(np.argwhere(self.board_status == 4))
-        if player1_score > player2_score:
-            # Player 1 wins
+        if player1_score > player2_score:# Player 1 wins
             text = 'Winner: Player 1 '
             color = player1_color
         elif player2_score > player1_score:
@@ -141,7 +131,6 @@ class Dots_and_Boxes():
                                 text=score_text)
         score_text = 'Player 1 : ' + str(player1_score) + '\n'
         score_text += 'Player 2 : ' + str(player2_score) + '\n'
-        # score_text += 'Tie                    : ' + str(self.tie_score)
         self.canvas.create_text(size_of_board / 2, 3 * size_of_board / 4, font="cmr 30 bold", fill=Green_color,
                                 text=score_text)
         self.reset_board = True
