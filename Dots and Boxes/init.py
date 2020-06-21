@@ -148,42 +148,38 @@ class Dots_and_Boxes():
         text='Next turn: '
         if self.player1_turn:
             text+='Player1'
-            color = player1_color
+            color=player1_color
         else:
-            text += 'Player2'
-            color = player2_color
+            text+='Player2'
+            color=player2_color
         self.canvas.delete(self.turntext_handle)
-        self.turntext_handle = self.canvas.create_text(size_of_board - 5*len(text),
-                                                       size_of_board-distance_between_dots/8,
-                                                       font="cmr 15 bold", text=text, fill=color)
-    def shade_box(self, box, color):
-        start_x = distance_between_dots / 2 + box[1] * distance_between_dots + edge_width/2
-        start_y = distance_between_dots / 2 + box[0] * distance_between_dots + edge_width/2
-        end_x = start_x + distance_between_dots - edge_width
-        end_y = start_y + distance_between_dots - edge_width
-        self.canvas.create_rectangle(start_x, start_y, end_x, end_y, fill=color, outline='')
+        self.turntext_handle=self.canvas.create_text(size_of_board-5*len(text),size_of_board-distance_between_dots/8,font="cmr 15 bold",text=text,fill=color)
+    def shade_box(self,box,color):
+        start_x=distance_between_dots/2+box[1]*distance_between_dots+edge_width/2
+        start_y=distance_between_dots/2+box[0]*distance_between_dots+edge_width/2
+        end_x=start_x+distance_between_dots-edge_width
+        end_y=start_y+distance_between_dots-edge_width
+        self.canvas.create_rectangle(start_x,start_y,end_x,end_y,fill=color,outline='')
     def display_turn_text(self):
-        text = 'Next turn: '
+        text='Next turn: '
         if self.player1_turn:
-            text += 'Player1'
-            color = player1_color
+            text+='Player1'
+            color=player1_color
         else:
-            text += 'Player2'
-            color = player2_color
+            text+='Player2'
+            color=player2_color
         self.canvas.delete(self.turntext_handle)
-        self.turntext_handle = self.canvas.create_text(size_of_board - 5*len(text),
-                                                       size_of_board-distance_between_dots/8,
-                                                       font="cmr 15 bold",text=text, fill=color)
-    def click(self, event):
+        self.turntext_handle=self.canvas.create_text(size_of_board-5*len(text),size_of_board-distance_between_dots/8,font="cmr 15 bold",text=text,fill=color)
+    def click(self,event):
         if not self.reset_board:
-            grid_position = [event.x, event.y]
-            logical_positon, valid_input = self.convert_grid_to_logical_position(grid_position)
-            if valid_input and not self.is_grid_occupied(logical_positon, valid_input):
-                self.update_board(valid_input, logical_positon)
-                self.make_edge(valid_input, logical_positon)
+            grid_position=[event.x,event.y]
+            logical_positon,valid_input=self.convert_grid_to_logical_position(grid_position)
+            if valid_input and not self.is_grid_occupied(logical_positon,valid_input):
+                self.update_board(valid_input,logical_positon)
+                self.make_edge(valid_input,logical_positon)
                 self.mark_box()
                 self.refresh_board()
-                self.player1_turn = not self.player1_turn
+                self.player1_turn=not self.player1_turn
                 if self.is_gameover():
                     # self.canvas.delete("all")
                     self.display_gameover()
@@ -192,6 +188,6 @@ class Dots_and_Boxes():
         else:
             self.canvas.delete("all")
             self.play_again()
-            self.reset_board = False
-initiateGame = Dots_and_Boxes()
+            self.reset_board=False
+initiateGame=Dots_and_Boxes()
 initiateGame.mainloop()
