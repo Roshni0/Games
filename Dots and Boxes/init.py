@@ -58,46 +58,46 @@ class Dots_and_Boxes():
             c=int(position[1]//2)
             logical_position=[r,c]
             type='row'
-        elif position[0] % 2 == 0 and (position[1] - 1) % 2 == 0:
-            c = int((position[1] - 1) // 2)
-            r = int(position[0] // 2)
-            logical_position = [r, c]
+        elif position[0]%2==0 and(position[1]-1)%2==0:
+            c=int((position[1]-1)//2)
+            r=int(position[0]//2)
+            logical_position=[r,c]
             type = 'col'
-        return logical_position, type
+        return logical_position,type
     def mark_box(self):
-        boxes = np.argwhere(self.board_status == -4)
+        boxes=np.argwhere(self.board_status==-4)
         for box in boxes:
             if list(box) not in self.already_marked_boxes and list(box) !=[]:
                 self.already_marked_boxes.append(list(box))
-                color = player1_color_light
-                self.shade_box(box, color)
-        boxes = np.argwhere(self.board_status == 4)
+                color=player1_color_light
+                self.shade_box(box,color)
+        boxes=np.argwhere(self.board_status==4)
         for box in boxes:
             if list(box) not in self.already_marked_boxes and list(box) !=[]:
                 self.already_marked_boxes.append(list(box))
-                color = player2_color_light
+                color=player2_color_light
                 self.shade_box(box, color)
-    def update_board(self, type, logical_position):
-        r = logical_position[0]
-        c = logical_position[1]
-        val = 1
+    def update_board(self,type,logical_position):
+        r=logical_position[0]
+        c=logical_position[1]
+        val=1
         if self.player1_turn:
-            val =- 1
-        if c < (number_of_dots-1) and r < (number_of_dots-1):
-            self.board_status[c][r] += val
-        if type == 'row':
-            self.row_status[c][r] = 1
-            if c >= 1: 
-                self.board_status[c-1][r] += val
-        elif type == 'col':
-            self.col_status[c][r] = 1
-            if r >= 1:
-                self.board_status[c][r-1] += val
+            val=-1
+        if c<(number_of_dots-1)and r<(number_of_dots-1):
+            self.board_status[c][r]+=val
+        if type=='row':
+            self.row_status[c][r]=1
+            if c>=1: 
+                self.board_status[c-1][r]+=val
+        elif type=='col':
+            self.col_status[c][r]=1
+            if r>=1:
+                self.board_status[c][r-1]+=val
     def is_gameover(self):
-        return (self.row_status == 1).all() and (self.col_status == 1).all()
+        return (self.row_status==1).all()and(self.col_status==1).all()
 #Drawing Functions:
-    def make_edge(self, type, logical_position):
-        if type == 'row':
+    def make_edge(self,type,logical_position):
+        if type=='row':
             start_x = distance_between_dots/2 + logical_position[0]*distance_between_dots
             end_x = start_x+distance_between_dots
             start_y = distance_between_dots/2 + logical_position[1]*distance_between_dots
